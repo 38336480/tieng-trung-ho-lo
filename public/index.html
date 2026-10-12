@@ -1,2049 +1,1836 @@
+
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#173f3b">
+    <meta name="description" content="Tiếng Trung Hồ Lô - Học tiếng Trung giao tiếp, HSK và tiếng Trung ứng dụng với lộ trình phù hợp cho từng học viên.">
+    <meta name="keywords" content="Tiếng Trung Hồ Lô, học tiếng Trung, HSK, tiếng Trung giao tiếp, học tiếng Trung online">
+    <title>Tiếng Trung Hồ Lô | Học tiếng Trung để bước xa hơn</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 
-    <meta
-        name="description"
-        content="Tiếng Trung Hồ Lô - Học tiếng Trung giao tiếp, HSK, tiếng Trung ứng dụng cho học sinh, sinh viên và người đi làm."
-    >
+    <style>
+        /* BẢN THIẾT KẾ HTML MỚI */
+        :root {
+            --holo-green: #438f80;
+            --holo-dark: #173f3b;
+            --holo-deep: #102f2b;
+            --holo-mint: #e8f3ed;
+            --holo-cream: #faf9f5;
+            --holo-gold: #c6ad76;
+            --holo-text: #233c36;
+            --holo-muted: #74827b;
+        }
 
-    <meta
-        name="keywords"
-        content="tiếng Trung Hồ Lô, học tiếng Trung, HSK, tiếng Trung giao tiếp, học tiếng Trung online"
-    >
+        * { box-sizing: border-box; }
 
-    <meta name="theme-color" content="#06352f">
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
 
-    <title>
-        Tiếng Trung Hồ Lô | Học tiếng Trung để bước xa hơn nữa
-    </title>
+        body {
+            margin: 0;
+            color: var(--holo-text);
+            background: var(--holo-cream);
+            font-family: "Be Vietnam Pro", sans-serif;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    <link
-        rel="stylesheet"
-        href="/css/style.css"
-    >
+        img { display: block; max-width: 100%; }
+        a { text-decoration: none; }
+        button, input, select, textarea { font: inherit; }
 
+        .container {
+            width: min(1180px, calc(100% - 44px));
+            margin-inline: auto;
+        }
+
+        .topbar {
+            position: relative;
+            z-index: 1002;
+            padding: 7px 0;
+            color: #e8f1ec;
+            background: var(--holo-deep);
+            font-size: 10px;
+            letter-spacing: .04em;
+        }
+
+        .topbar-inner,
+        .topbar-left,
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .topbar-left span:first-child { color: #a5d9c2; }
+        .topbar a { color: white; }
+        .topbar a:hover { color: var(--holo-gold); }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(250, 249, 245, .94);
+            border-bottom: 1px solid rgba(39, 94, 82, .09);
+            backdrop-filter: blur(18px);
+            transition: box-shadow .3s ease, background .3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, .97);
+            box-shadow: 0 8px 30px rgba(23, 63, 59, .08);
+        }
+
+        .header-inner {
+            min-height: 84px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .brand-mark {
+            width: 52px;
+            height: 52px;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(67, 143, 128, .16);
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 6px 20px rgba(23, 63, 59, .08);
+        }
+
+        .brand-mark img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+        }
+
+        .brand-text strong {
+            color: var(--holo-dark);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .025em;
+        }
+
+        .brand-text small {
+            color: #b19a66;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .1em;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+
+        .main-nav > a:not(.button-primary) {
+            position: relative;
+            padding: 11px 9px;
+            color: #53665e;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .main-nav > a:not(.button-primary)::after {
+            position: absolute;
+            right: 9px;
+            bottom: 4px;
+            left: 9px;
+            height: 2px;
+            content: "";
+            background: var(--holo-green);
+            transform: scaleX(0);
+            transition: transform .3s ease;
+        }
+
+        .main-nav > a:hover,
+        .main-nav > a.active { color: var(--holo-green); }
+
+        .main-nav > a:hover::after,
+        .main-nav > a.active::after { transform: scaleX(1); }
+
+        .button-primary,
+        .button-gold,
+        .button-submit,
+        .small-button {
+            display: inline-flex;
+            min-height: 46px;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 21px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .button-primary {
+            color: white !important;
+            background: linear-gradient(135deg, #438f80, #28685d);
+            box-shadow: 0 8px 22px rgba(44, 111, 95, .18);
+        }
+
+        .button-primary:hover,
+        .button-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 13px 28px rgba(44, 111, 95, .26);
+        }
+
+        .button-gold {
+            color: #40351e !important;
+            background: linear-gradient(135deg, #eadcb7, #c4a96c);
+        }
+
+        .button-gold:hover { transform: translateY(-3px); }
+
+        .main-nav .button-primary {
+            min-height: 41px;
+            padding: 9px 15px;
+            margin-left: 5px;
+            font-size: 10px;
+        }
+
+        .menu-toggle { display: none; }
+
+        /* HERO */
+
+        .hero {
+            position: relative;
+            padding: 20px 0 0;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 0% 0%, #e1eee4, transparent 40%),
+                var(--holo-cream);
+        }
+
+        .hero-box {
+            position: relative;
+            width: min(1440px, calc(100% - 30px));
+            min-height: 590px;
+            margin: auto;
+            overflow: hidden;
+            isolation: isolate;
+            border-radius: 29px;
+            background: var(--holo-dark);
+            box-shadow: 0 24px 65px rgba(23, 63, 59, .16);
+        }
+
+        .hero-image-wrap {
+            position: absolute;
+            z-index: -2;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            min-height: 590px;
+            object-fit: cover;
+            object-position: center;
+            animation: holoHeroIn 1.1s ease both;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(12, 43, 38, .94), rgba(17, 57, 49, .77) 43%, rgba(17, 57, 49, .18) 100%),
+                linear-gradient(0deg, rgba(12, 43, 38, .24), transparent 60%);
+        }
+
+        .hero-image-shine {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.10) 50%, transparent 60%);
+            transform: translateX(-100%);
+            animation: holoShine 8s ease-in-out 2s infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            min-height: 590px;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 65px 8%;
+            color: white;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border: 1px solid rgba(255,255,255,.24);
+            border-radius: 999px;
+            color: #e4d3a6;
+            background: rgba(255,255,255,.08);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .15em;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-chinese {
+            margin: 22px 0 0;
+            color: #e7d7ad;
+            font-family: "Noto Serif SC", serif;
+            font-size: 17px;
+            letter-spacing: .28em;
+        }
+
+        .hero-content h1 {
+            max-width: 780px;
+            margin: 10px 0 18px;
+            color: white;
+            font-size: clamp(40px, 5.6vw, 72px);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -.045em;
+        }
+
+        .hero-content h1 em {
+            color: #c6e6d6;
+            font-family: "Noto Serif SC", serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .hero-description {
+            max-width: 535px;
+            margin: 0;
+            color: rgba(255,255,255,.83);
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .hero-actions a { min-height: 50px; padding-inline: 24px; }
+
+        .hero-note {
+            margin-top: 25px;
+            color: rgba(255,255,255,.68);
+            font-size: 10px;
+        }
+
+        /* TRUST */
+
+        .trust-bar {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(39,94,82,.10);
+            background: white;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .trust-item {
+            display: grid;
+            grid-template-columns: 43px 1fr;
+            align-content: center;
+            column-gap: 12px;
+            padding: 12px 18px;
+            border-right: 1px solid rgba(39,94,82,.12);
+        }
+
+        .trust-item:last-child { border-right: 0; }
+
+        .trust-number {
+            grid-row: span 2;
+            display: grid;
+            width: 41px;
+            height: 41px;
+            place-items: center;
+            border-radius: 14px;
+            color: var(--holo-green);
+            background: #e8f3ed;
+            font-family: "Noto Serif SC", serif;
+            font-size: 14px;
+        }
+
+        .trust-item strong { font-size: 11px; line-height: 1.8; }
+        .trust-item > span { color: var(--holo-muted); font-size: 10px; }
+
+        /* SECTION */
+
+        .section {
+            position: relative;
+            padding: 95px 0;
+        }
+
+        .section-soft {
+            background: linear-gradient(135deg, #f0f6ef, #f8f8f2);
+        }
+
+        .section-dark {
+            position: relative;
+            overflow: hidden;
+            color: white;
+            background:
+                radial-gradient(ellipse at 0% 0%, rgba(74,145,120,.23), transparent 40%),
+                radial-gradient(ellipse at 100% 100%, rgba(196,169,108,.10), transparent 38%),
+                #173f3b;
+        }
+
+        .section-dark::before {
+            position: absolute;
+            inset: 0;
+            content: "";
+            pointer-events: none;
+            opacity: .12;
+            background-image: radial-gradient(rgba(255,255,255,.6) .7px, transparent .7px);
+            background-size: 24px 24px;
+        }
+
+        .section-dark > .container { position: relative; z-index: 1; }
+
+        .section-heading {
+            max-width: 720px;
+            margin: 0 auto 43px;
+            text-align: center;
+        }
+
+        .section-label {
+            color: var(--holo-green);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .17em;
+        }
+
+        .section-heading h2,
+        .online-content h2,
+        .registration-info h2 {
+            margin: 14px 0;
+            color: var(--holo-dark);
+            font-family: "Noto Serif SC", serif;
+            font-size: clamp(29px, 3.5vw, 43px);
+            font-weight: 600;
+            line-height: 1.42;
+            letter-spacing: -.03em;
+        }
+
+        .section-heading p {
+            max-width: 580px;
+            margin: auto;
+            color: var(--holo-muted);
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        .heading-light h2 { color: white; }
+        .heading-light p { color: rgba(255,255,255,.70); }
+        .heading-light .section-label { color: #e2d0a0; }
+
+        /* FEATURE CARDS */
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: 18px;
+        }
+
+        .feature-card {
+            position: relative;
+            min-height: 230px;
+            padding: 25px 22px;
+            overflow: hidden;
+            border: 1px solid rgba(57,117,100,.11);
+            border-radius: 21px;
+            background: rgba(255,255,255,.92);
+            box-shadow: 0 10px 30px rgba(27,70,60,.05);
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+
+        .feature-card::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            content: "";
+            background: linear-gradient(90deg, var(--holo-green), var(--holo-gold, #c6ad76));
+            transition: width .35s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 22px 48px rgba(27,70,60,.11);
+        }
+
+        .feature-card:hover::before { width: 100%; }
+
+        .feature-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 23px;
+        }
+
+        .feature-number { color: #9caf9f; font-size: 11px; font-weight: 700; }
+
+        .feature-icon {
+            display: grid;
+            width: 45px;
+            height: 45px;
+            place-items: center;
+            border-radius: 15px;
+            background: #e8f3ed;
+            font-size: 20px;
+            transition: transform .3s ease;
+        }
+
+        .feature-card:hover .feature-icon { transform: rotate(-6deg) scale(1.06); }
+        .feature-card h3 { margin: 0 0 8px; color: var(--holo-dark); font-size: 14px; }
+        .feature-card p { margin: 0; color: var(--holo-muted); font-size: 11px; line-height: 1.9; }
+        .card-line { width: 34px; height: 2px; margin-top: 20px; background: var(--holo-gold, #c6ad76); transition: width .3s ease; }
+        .feature-card:hover .card-line { width: 65px; }
+
+        /* COURSES */
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 21px;
+        }
+
+        .course-card {
+            position: relative;
+            min-height: 285px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 23px;
+            background: linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.035));
+            transition: transform .35s ease, border-color .35s ease;
+        }
+
+        .course-card::after {
+            position: absolute;
+            right: -65px;
+            bottom: -75px;
+            width: 190px;
+            height: 190px;
+            border: 1px solid rgba(226,208,160,.23);
+            border-radius: 50%;
+            content: "";
+            transition: transform .4s ease;
+        }
+
+        .course-card:hover { transform: translateY(-8px); border-color: rgba(226,208,160,.4); }
+        .course-card:hover::after { transform: scale(1.2); }
+
+        .course-card-body {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            min-height: 285px;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 29px 25px;
+        }
+
+        .course-card .section-label { color: #e2d0a0; }
+        .course-card h3 { margin: 18px 0 10px; color: white; font-family: "Noto Serif SC", serif; font-size: 22px; line-height: 1.5; }
+        .course-card p { margin: 0 0 24px; color: rgba(255,255,255,.72); font-size: 11px; line-height: 2; }
+        .course-card .button-primary { margin-top: auto; }
+
+        .loading-card {
+            grid-column: 1 / -1;
+            display: flex;
+            min-height: 140px;
+            align-items: center;
+            justify-content: center;
+            gap: 13px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 20px;
+            color: rgba(255,255,255,.8);
+        }
+
+        .loading-spinner {
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(255,255,255,.2);
+            border-top-color: #e2d0a0;
+            border-radius: 50%;
+            animation: holoSpin .8s linear infinite;
+        }
+
+        /* ONLINE */
+
+        .online-layout {
+            display: grid;
+            grid-template-columns: 1fr .95fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .online-content h2 { margin-top: 12px; }
+        .online-content > p { color: var(--holo-muted); font-size: 12px; line-height: 2; }
+
+        .online-list { display: grid; gap: 12px; margin: 25px 0; }
+
+        .online-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 13px 15px;
+            border: 1px solid rgba(57,117,100,.10);
+            border-radius: 16px;
+            background: rgba(255,255,255,.8);
+            transition: transform .3s ease;
+        }
+
+        .online-item:hover { transform: translateX(5px); }
+        .online-item > div:last-child { display: grid; gap: 3px; }
+        .online-item strong { color: var(--holo-dark); font-size: 12px; }
+        .online-item span:not(.feature-icon) { color: var(--holo-muted); font-size: 10px; }
+
+        .online-visual {
+            position: relative;
+            display: grid;
+            min-height: 410px;
+            place-items: center;
+            overflow: hidden;
+            border: 1px solid rgba(57,117,100,.12);
+            border-radius: 30px;
+            background: radial-gradient(circle, #fff 0%, #e9f3ec 47%, #d5e8dc 100%);
+            box-shadow: 0 20px 50px rgba(27,70,60,.09);
+        }
+
+        .online-visual::before,
+        .online-visual::after {
+            position: absolute;
+            border: 1px solid rgba(49,120,99,.13);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .online-visual::before { width: 340px; height: 340px; }
+        .online-visual::after { width: 250px; height: 250px; }
+
+        .orbit { position: absolute; border: 1px solid rgba(49,120,99,.15); border-radius: 50%; }
+        .orbit-1 { width: 175px; height: 175px; }
+        .orbit-2 { width: 420px; height: 240px; transform: rotate(-35deg); }
+        .orbit-3 { width: 420px; height: 240px; transform: rotate(35deg); }
+
+        .chinese-character {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            width: 145px;
+            height: 145px;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,.8);
+            border-radius: 40px;
+            color: white;
+            background: linear-gradient(145deg, #438f80, #1c554b);
+            box-shadow: 0 25px 50px rgba(37,105,87,.25);
+            font-family: "Noto Serif SC", serif;
+            font-size: 84px;
+            transform: rotate(-5deg);
+        }
+
+        .visual-pill {
+            position: absolute;
+            z-index: 3;
+            padding: 9px 15px;
+            border: 1px solid rgba(57,117,100,.10);
+            border-radius: 999px;
+            color: var(--holo-dark);
+            background: rgba(255,255,255,.94);
+            box-shadow: 0 8px 23px rgba(32,78,64,.09);
+            font-size: 10px;
+            font-weight: 700;
+            animation: holoFloat 5s ease-in-out infinite;
+        }
+
+        .pill-1 { top: 18%; left: 12%; }
+        .pill-2 { top: 28%; right: 9%; animation-delay: -.8s; }
+        .pill-3 { right: 13%; bottom: 19%; animation-delay: -1.6s; }
+        .pill-4 { bottom: 13%; left: 12%; animation-delay: -2.4s; }
+
+        /* HSK */
+
+        .section-glow {
+            background: radial-gradient(ellipse at 0% 50%, #e3efe4, transparent 45%), var(--holo-cream);
+        }
+
+        .hsk-box {
+            position: relative;
+            padding: 43px;
+            overflow: hidden;
+            border-radius: 29px;
+            color: white;
+            background:
+                radial-gradient(circle at 100% 0%, rgba(92,158,133,.27), transparent 40%),
+                linear-gradient(125deg, #173f3b, #285f53);
+            box-shadow: 0 24px 60px rgba(25,74,62,.16);
+        }
+
+        .hsk-main {
+            display: grid;
+            grid-template-columns: 1fr .9fr;
+            align-items: center;
+            gap: 42px;
+        }
+
+        .hsk-main .section-label { color: #e2d0a0; }
+        .hsk-main h2 { margin: 12px 0; color: white; font-family: "Noto Serif SC", serif; font-size: clamp(33px,4vw,47px); }
+        .hsk-main p { max-width: 480px; color: rgba(255,255,255,.72); font-size: 12px; line-height: 2; }
+
+        .hsk-levels {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 11px;
+        }
+
+        .hsk-levels > div {
+            display: flex;
+            min-height: 78px;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 16px;
+            color: rgba(255,255,255,.8);
+            background: rgba(255,255,255,.06);
+            font-size: 10px;
+            transition: background .3s ease, transform .3s ease;
+        }
+
+        .hsk-levels > div:hover { transform: translateY(-4px); background: rgba(255,255,255,.14); }
+        .hsk-levels strong { color: #e2d0a0; font-family: "Noto Serif SC", serif; font-size: 25px; }
+
+        /* SCHEDULE */
+
+        .schedule-box {
+            overflow: hidden;
+            border: 1px solid rgba(39,94,82,.12);
+            border-radius: 22px;
+            background: white;
+            box-shadow: 0 12px 35px rgba(27,70,60,.06);
+        }
+
+        .schedule-table-wrap { width: 100%; overflow-x: auto; }
+        .schedule-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 11px; }
+        .schedule-table thead { color: white; background: var(--holo-dark); }
+        .schedule-table th { padding: 17px; font-size: 10px; white-space: nowrap; }
+        .schedule-table td { padding: 18px 17px; border-bottom: 1px solid #edf1ed; color: var(--holo-muted); white-space: nowrap; }
+        .schedule-table tbody tr:last-child td { border-bottom: 0; }
+        .schedule-table tbody tr:hover { background: #f6faf6; }
+        .schedule-table td strong { color: var(--holo-dark); font-size: 11px; }
+
+        .status {
+            display: inline-flex;
+            padding: 6px 10px;
+            border-radius: 999px;
+            color: #34745f;
+            background: #e8f5ec;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        /* TEACHERS */
+
+        .teacher-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 22px;
+        }
+
+        .teacher-card {
+            overflow: hidden;
+            border: 1px solid rgba(39,94,82,.12);
+            border-radius: 23px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(27,70,60,.06);
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+
+        .teacher-card:hover { transform: translateY(-7px); box-shadow: 0 23px 48px rgba(27,70,60,.12); }
+
+        .teacher-placeholder {
+            position: relative;
+            display: grid;
+            min-height: 205px;
+            place-items: center;
+            overflow: hidden;
+            color: rgba(255,255,255,.94);
+            background:
+                radial-gradient(circle at 75% 25%, rgba(226,208,160,.3), transparent 30%),
+                linear-gradient(145deg, #438f80, #1b5148);
+            font-family: "Noto Serif SC", serif;
+            font-size: 84px;
+        }
+
+        .teacher-placeholder::after {
+            position: absolute;
+            right: -35px;
+            bottom: -80px;
+            width: 220px;
+            height: 220px;
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .teacher-body { padding: 23px; }
+        .teacher-body h3 { margin: 0 0 6px; color: var(--holo-dark); font-size: 15px; }
+        .teacher-specialty { color: #ad9258; font-size: 10px; font-weight: 700; }
+        .teacher-body p { margin: 13px 0; color: var(--holo-muted); font-size: 11px; line-height: 1.9; }
+        .teacher-more { color: var(--holo-green); font-size: 11px; font-weight: 700; }
+        .teacher-more:hover { color: #a58b53; }
+
+        /* ARTICLES */
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: 16px;
+        }
+
+        .article-card {
+            display: flex;
+            min-height: 265px;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 23px 20px;
+            border: 1px solid rgba(39,94,82,.11);
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 9px 27px rgba(27,70,60,.05);
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+
+        .article-card:hover { transform: translateY(-7px); box-shadow: 0 20px 42px rgba(27,70,60,.11); }
+        .article-number { margin-bottom: 15px; color: #d1e2d7; font-family: "Noto Serif SC", serif; font-size: 34px; line-height: 1.2; }
+        .article-tag { padding: 5px 9px; border-radius: 999px; color: var(--holo-green); background: #e8f3ed; font-size: 9px; font-weight: 700; }
+        .article-card h3 { margin: 15px 0 8px; color: var(--holo-dark); font-size: 13px; line-height: 1.7; }
+        .article-card p { margin: 0 0 17px; color: var(--holo-muted); font-size: 10px; line-height: 1.9; }
+        .article-link { margin-top: auto; color: var(--holo-green); font-size: 10px; font-weight: 700; }
+        .article-link:hover { color: #a58b53; }
+
+        /* REGISTRATION */
+
+        .registration-section {
+            position: relative;
+            padding: 90px 0;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 0% 100%, #dceee2, transparent 42%), #edf4ed;
+        }
+
+        .registration-box {
+            display: grid;
+            grid-template-columns: .82fr 1.18fr;
+            gap: 42px;
+            padding: 42px;
+            border: 1px solid rgba(255,255,255,.85);
+            border-radius: 29px;
+            background: rgba(255,255,255,.91);
+            box-shadow: 0 23px 65px rgba(31,77,63,.10);
+        }
+
+        .registration-info h2 { margin: 13px 0; color: var(--holo-dark); font-family: "Noto Serif SC", serif; font-size: clamp(27px,3vw,38px); line-height: 1.45; }
+        .registration-info > p { color: var(--holo-muted); font-size: 11px; line-height: 2; }
+
+        .contact-mini { display: grid; gap: 14px; margin-top: 22px; }
+        .contact-mini > div { display: grid; gap: 3px; padding-left: 13px; border-left: 2px solid var(--holo-gold); }
+        .contact-mini strong { color: var(--holo-green); font-size: 9px; letter-spacing: .12em; }
+        .contact-mini span { color: var(--holo-text); font-size: 11px; overflow-wrap: anywhere; }
+
+        .register-form { display: grid; gap: 14px; }
+        .form-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+        .form-group { display: flex; min-width: 0; flex-direction: column; gap: 7px; }
+        .form-group label { color: var(--holo-text); font-size: 10px; font-weight: 700; }
+
+        .register-form input,
+        .register-form select,
+        .register-form textarea {
+            display: block;
+            width: 100%;
+            min-height: 45px;
+            margin-top: 6px;
+            padding: 11px 13px;
+            border: 1px solid #dce6de;
+            border-radius: 11px;
+            outline: none;
+            color: var(--holo-text);
+            background: #fbfcfa;
+            font-size: 11px;
+            font-weight: 400;
+            transition: border-color .25s ease, box-shadow .25s ease;
+        }
+
+        .register-form textarea { min-height: 100px; resize: vertical; }
+
+        .register-form input:focus,
+        .register-form select:focus,
+        .register-form textarea:focus {
+            border-color: var(--holo-green);
+            box-shadow: 0 0 0 4px rgba(67,143,128,.10);
+        }
+
+        .register-form input::placeholder,
+        .register-form textarea::placeholder { color: #a0ada4; }
+
+        .button-submit {
+            width: 100%;
+            min-height: 49px;
+            color: white;
+            background: linear-gradient(135deg, #438f80, #28685d);
+        }
+
+        .form-note { color: var(--holo-muted); font-size: 10px; line-height: 1.8; }
+        #register-msg:not(:empty) { padding: 10px 12px; border-radius: 10px; color: var(--holo-dark); background: #e8f3ed; }
+
+        /* FOOTER */
+
+        .contact-section {
+            padding: 68px 0 48px;
+            color: rgba(255,255,255,.72);
+            background:
+                radial-gradient(ellipse at 0% 0%, rgba(71,137,114,.18), transparent 35%),
+                #153b36;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.45fr .8fr 1fr;
+            gap: 48px;
+        }
+
+        .contact-brand .brand { margin-bottom: 20px; }
+        .contact-brand .brand-mark { border-color: rgba(255,255,255,.2); }
+        .contact-brand .brand-text strong { color: white; }
+        .contact-brand .brand-text small { color: #e2d0a0; }
+        .contact-brand > p { max-width: 350px; margin: 0 0 20px; color: rgba(255,255,255,.68); font-size: 11px; line-height: 2; }
+
+        .footer-button {
+            display: inline-flex;
+            padding: 11px 19px;
+            border-radius: 999px;
+            color: var(--holo-dark) !important;
+            background: #e2d0a0;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .contact-column { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; }
+        .contact-column h3 { position: relative; margin: 0 0 11px; padding-bottom: 12px; color: white; font-family: "Noto Serif SC", serif; font-size: 16px; }
+        .contact-column h3::after { position: absolute; bottom: 0; left: 0; width: 33px; height: 2px; content: ""; background: var(--holo-gold); }
+        .contact-column a, .contact-column p { margin: 0; color: rgba(255,255,255,.70); font-size: 10px; line-height: 1.9; overflow-wrap: anywhere; }
+        .contact-column a:hover { color: #e2d0a0; }
+
+        .footer {
+            color: rgba(255,255,255,.62);
+            background: #102e2a;
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        .footer-inner {
+            display: flex;
+            min-height: 64px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            font-size: 10px;
+        }
+
+        .footer-inner a { color: #e2d0a0; font-weight: 700; }
+
+        /* HIỆU ỨNG */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .65s ease, transform .65s ease;
+        }
+
+        .reveal.show { opacity: 1; transform: translateY(0); }
+
+        @keyframes holoSpin { to { transform: rotate(360deg); } }
+        @keyframes holoHeroIn {
+            from { opacity: .5; transform: scale(1.04); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes holoShine {
+            0%,65%,100% { transform: translateX(-100%); }
+            85% { transform: translateX(100%); }
+        }
+        @keyframes holoFloat {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* TABLET */
+
+        @media (max-width: 1050px) {
+            .header-inner { gap: 12px; }
+            .brand-mark { width: 46px; height: 46px; }
+            .brand-text strong { font-size: 11px; }
+            .brand-text small { font-size: 8px; }
+            .main-nav { gap: 0; }
+            .main-nav > a:not(.button-primary) { padding-inline: 6px; font-size: 10px; }
+            .main-nav .button-primary { padding-inline: 11px; }
+            .feature-grid, .article-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+            .online-layout { gap: 32px; }
+            .registration-box { gap: 28px; padding: 30px; }
+            .contact-grid { gap: 28px; }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+            .topbar-inner { justify-content: center; }
+            .topbar-left { display: none; }
+
+            .header-inner { min-height: 72px; }
+            .menu-toggle {
+                display: flex;
+                width: 43px;
+                height: 43px;
+                flex-shrink: 0;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                border: 1px solid rgba(39,94,82,.14);
+                border-radius: 13px;
+                background: white;
+                cursor: pointer;
+            }
+
+            .menu-toggle span { display: block; width: 19px; height: 2px; border-radius: 5px; background: var(--holo-dark); transition: transform .3s ease, opacity .3s ease; }
+            .menu-toggle.active span:first-child { transform: translateY(7px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:last-child { transform: translateY(-7px) rotate(-45deg); }
+
+            .main-nav {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                display: flex;
+                max-height: calc(100vh - 100px);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+                padding: 15px 22px 22px;
+                overflow-y: auto;
+                border-top: 1px solid rgba(39,94,82,.09);
+                background: rgba(255,255,255,.98);
+                box-shadow: 0 20px 35px rgba(24,66,56,.12);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-8px);
+                transition: opacity .25s ease, visibility .25s ease, transform .25s ease;
+            }
+
+            .main-nav.open { opacity: 1; visibility: visible; transform: translateY(0); }
+            .main-nav > a:not(.button-primary) { padding: 11px 13px; border-radius: 10px; font-size: 12px; }
+            .main-nav > a:hover, .main-nav > a.active { background: #e8f3ed; }
+            .main-nav > a:not(.button-primary)::after { display: none; }
+            .main-nav .button-primary { margin: 8px 0 0; min-height: 45px; font-size: 11px; }
+
+            .hero { padding-top: 12px; }
+            .hero-box { width: calc(100% - 22px); min-height: 530px; border-radius: 22px; }
+            .hero-image, .hero-content { min-height: 530px; }
+            .hero-image { object-position: 58% center; }
+            .hero-overlay { background: linear-gradient(90deg,rgba(12,43,38,.91),rgba(17,57,49,.62)), linear-gradient(0deg,rgba(12,43,38,.25),transparent); }
+            .hero-content { padding: 38px 24px; }
+            .hero-content h1 { font-size: clamp(36px,8vw,54px); }
+            .hero-description { font-size: 12px; }
+            .hero-actions a { min-height: 46px; padding-inline: 16px; }
+
+            .trust-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+            .trust-item { padding: 13px 8px; border-bottom: 1px solid rgba(39,94,82,.10); }
+            .trust-item:nth-child(2) { border-right: 0; }
+            .trust-item:nth-child(n+3) { border-bottom: 0; }
+
+            .section { padding: 68px 0; }
+            .section-heading { margin-bottom: 32px; }
+            .section-heading h2, .online-content h2 { font-size: clamp(28px,6vw,36px); }
+
+            .course-grid, .teacher-grid { grid-template-columns: 1fr; }
+            .course-card, .course-card-body { min-height: 255px; }
+            .online-layout, .hsk-main, .registration-box { grid-template-columns: 1fr; }
+            .online-layout { gap: 32px; }
+            .online-visual { min-height: 330px; }
+            .hsk-box { padding: 29px 22px; }
+            .hsk-main { gap: 27px; }
+
+            .registration-section { padding: 65px 0; }
+            .registration-box { gap: 28px; padding: 26px 22px; }
+
+            .contact-grid { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+            .contact-brand { grid-column: 1 / -1; }
+            .contact-column:last-child { grid-column: 1 / -1; }
+        }
+
+        @media (max-width: 480px) {
+            .container { width: calc(100% - 32px); }
+            .brand { gap: 8px; }
+            .brand-mark { width: 42px; height: 42px; border-radius: 12px; }
+            .brand-text strong { font-size: 10px; }
+            .brand-text small { font-size: 7px; }
+            .topbar-right { gap: 7px; font-size: 9px; }
+
+            .hero-box { min-height: 510px; }
+            .hero-image, .hero-content { min-height: 510px; }
+            .hero-content { padding: 30px 19px; }
+            .hero-content h1 { font-size: 36px; }
+            .hero-actions { width: 100%; flex-direction: column; }
+            .hero-actions a { width: 100%; }
+
+            .trust-item { grid-template-columns: 34px 1fr; gap: 8px; padding-inline: 4px; }
+            .trust-number { width: 33px; height: 33px; border-radius: 10px; font-size: 11px; }
+            .trust-item strong { font-size: 10px; }
+            .trust-item > span { font-size: 9px; }
+
+            .feature-grid, .article-grid { grid-template-columns: 1fr; }
+            .feature-card { min-height: auto; }
+            .feature-top { margin-bottom: 16px; }
+            .article-card { min-height: 220px; }
+            .form-row { grid-template-columns: 1fr; gap: 14px; }
+
+            .online-visual { min-height: 285px; border-radius: 23px; }
+            .chinese-character { width: 115px; height: 115px; border-radius: 33px; font-size: 68px; }
+            .visual-pill { padding: 8px 11px; font-size: 9px; }
+            .hsk-box { padding: 25px 17px; }
+            .hsk-levels { gap: 7px; }
+            .hsk-levels > div { min-height: 58px; gap: 3px; font-size: 9px; }
+            .hsk-levels strong { font-size: 21px; }
+
+            .registration-box { padding: 23px 16px; border-radius: 22px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .contact-brand, .contact-column:last-child { grid-column: auto; }
+
+            .footer-inner { min-height: 68px; flex-wrap: wrap; justify-content: center; padding-block: 13px; text-align: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     TOPBAR
-===================================================== -->
-
-<div class="topbar">
-
-    <div class="container topbar-inner">
-
-        <div class="topbar-left">
-
-
-
+    <!-- THANH THÔNG TIN -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <div class="topbar-left">
+                <span>✦</span>
+                <span>TIẾNG TRUNG HỒ LÔ · HỌC TẬP VÀ PHÁT TRIỂN</span>
+            </div>
+            <div class="topbar-right">
+                <span>Học tiếng Trung cùng Hồ Lô</span>
+                <span>✦</span>
+                <a href="tel:0343223809">034 322 3809</a>
+            </div>
         </div>
-
-
-        <div class="topbar-right">
-
-            <span>
-                Học tiếng Trung cùng Hồ Lô
-            </span>
-
-          
-
-        </div>
-
     </div>
 
-</div>
-
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header class="header">
-
-    <div class="container header-inner">
-
-
-        <!-- LOGO -->
-
-        <a
-            class="brand"
-            href="#trang-chu"
-            aria-label="Tiếng Trung Hồ Lô"
-        >
-
-            <span class="brand-mark">
-
-                <img
-                    src="/images/hinh-anh-ho-logo.jpg"
-                    alt="Logo Tiếng Trung Hồ Lô"
-                >
-
-            </span>
-
-
-            <span class="brand-text">
-
-                <strong>
-                    TIẾNG TRUNG HỒ LÔ
-                </strong>
-
-                <small>
-                    HỌC TIẾNG TRUNG • VƯƠN XA
-                </small>
-
-            </span>
-
-        </a>
-
-
-
-        <!-- MENU MOBILE -->
-
-        <button
-            class="menu-toggle"
-            id="menu-toggle"
-            aria-label="Mở menu"
-            type="button"
-        >
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-
-
-        <!-- NAVIGATION -->
-
-        <nav
-            class="main-nav"
-            id="main-nav"
-        >
-
-            <a
-                href="#trang-chu"
-                class="active"
-            >
-                Trang chủ
-            </a>
-
-            <a href="#gioi-thieu">
-                Giới thiệu
-            </a>
-
-            <a href="#khoa-hoc">
-                Khóa học
-            </a>
-
-            <a href="#lich-khai-giang">
-                Khai giảng
-            </a>
-
-            <a href="#giao-vien">
-                Giáo viên
-            </a>
-
-            <a href="#bai-viet">
-                Bài viết
-            </a>
-
-            <a href="#lien-he">
-                Liên hệ
-            </a>
-
-            <a
-                class="button-primary"
-                href="#dang-ky"
-            >
-                Đăng ký tư vấn
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
-
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main id="trang-chu">
-
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero">
-
-    <div class="hero-box">
-
-
-        <!-- ẢNH HỒ LÔ -->
-
-        <div class="hero-image-wrap">
-
-            <img
-                src="/images/hinh-anh-ho-lo.jpg"
-                alt="Tiếng Trung Hồ Lô - Học tiếng Trung để bước xa hơn nữa"
-                class="hero-image"
-                loading="eager"
-            >
-
-            <div
-                class="hero-overlay"
-                aria-hidden="true"
-            ></div>
-
-            <div
-                class="hero-image-shine"
-                aria-hidden="true"
-            ></div>
-
-        </div>
-
-
-</section>
-
-<!-- =====================================================
-     TRUST BAR
-===================================================== -->
-
-<section class="trust-bar">
-
-    <div class="container">
-
-        <div class="trust-grid">
-
-
-            <div class="trust-item">
-
-                <div class="trust-number">
-                    01
-                </div>
-
-                <strong>
-                    Giao tiếp cơ bản
-                </strong>
-
-                <span>
-                    Học và sử dụng ngay
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-inner">
+            <a class="brand" href="#trang-chu" aria-label="Tiếng Trung Hồ Lô">
+                <span class="brand-mark">
+                    <img src="/images/hinh-anh-ho-logo.jpg" alt="Logo Tiếng Trung Hồ Lô">
                 </span>
-
-            </div>
-
-
-            <div class="trust-item">
-
-                <div class="trust-number">
-                    02
-                </div>
-
-                <strong>
-                    Nâng cao toàn diện
-                </strong>
-
-                <span>
-                    Từ nền tảng đến HSK
+                <span class="brand-text">
+                    <strong>TIẾNG TRUNG HỒ LÔ</strong>
+                    <small>HỌC TIẾNG TRUNG · VƯƠN XA</small>
                 </span>
+            </a>
 
-            </div>
+            <button class="menu-toggle" id="menu-toggle" type="button"
+                    aria-label="Mở menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
 
-
-            <div class="trust-item">
-
-                <div class="trust-number">
-                    03
-                </div>
-
-                <strong>
-                    Tiếng Trung ứng dụng
-                </strong>
-
-                <span>
-                    Học phục vụ thực tế
-                </span>
-
-            </div>
-
-
-            <div class="trust-item">
-
-                <div class="trust-number">
-                    04
-                </div>
-
-                <strong>
-                    Online linh hoạt
-                </strong>
-
-                <span>
-                    Học mọi lúc, mọi nơi
-                </span>
-
-            </div>
-
-
+            <nav class="main-nav" id="main-nav" aria-label="Menu chính">
+                <a href="#trang-chu" class="active">Trang chủ</a>
+                <a href="#gioi-thieu">Giới thiệu</a>
+                <a href="#khoa-hoc">Khóa học</a>
+                <a href="#lich-khai-giang">Khai giảng</a>
+                <a href="#giao-vien">Giáo viên</a>
+                <a href="#bai-viet">Bài viết</a>
+                <a href="#lien-he">Liên hệ</a>
+                <a class="button-primary" href="#dang-ky">Đăng ký tư vấn ↗</a>
+            </nav>
         </div>
+    </header>
 
-    </div>
+    <main id="trang-chu">
 
-</section>
-
-
-
-<!-- =====================================================
-     GIỚI THIỆU
-===================================================== -->
-
-<section
-    id="gioi-thieu"
-    class="section"
->
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <span class="section-label">
-                VỀ HỒ LÔ
-            </span>
-
-
-            <h2>
-                Học đúng phương pháp,
-                tiến bộ từng ngày
-            </h2>
-
-
-            <p>
-
-                Tiếng Trung Hồ Lô hướng tới trải nghiệm
-                học dễ hiểu, thực tế và phù hợp với từng
-                người học.
-
-            </p>
-
-        </div>
-
-
-
-        <div class="feature-grid">
-
-
-            <div class="feature-card">
-
-                <div class="feature-top">
-
-                    <span class="feature-number">
-                        01
-                    </span>
-
-                    <div class="feature-icon">
-                        🎯
-                    </div>
-
+        <!-- BANNER CHÍNH -->
+        <section class="hero">
+            <div class="hero-box">
+                <div class="hero-image-wrap">
+                    <img src="/images/hinh-anh-ho-lo.jpg"
+                         alt="Không gian Tiếng Trung Hồ Lô"
+                         class="hero-image"
+                         fetchpriority="high">
+                    <div class="hero-overlay" aria-hidden="true"></div>
+                    <div class="hero-image-shine" aria-hidden="true"></div>
                 </div>
 
+                <div class="container hero-content">
+                    <span class="eyebrow">✦ CHÀO MỪNG BẠN ĐẾN VỚI HỒ LÔ</span>
+                    <p class="hero-chinese">中文 · 学习 · 成长</p>
 
-                <h3>
-                    Mục tiêu rõ ràng
-                </h3>
+                    <h1>
+                        Học tiếng Trung<br>
+                        <em>vững nền tảng.</em>
+                    </h1>
 
+                    <p class="hero-description">
+                        Bắt đầu hành trình chinh phục tiếng Trung với phương pháp
+                        học rõ ràng, thực hành thực tế và lộ trình phù hợp với
+                        mục tiêu học tập, giao tiếp và công việc của bạn.
+                    </p>
 
-                <p>
-                    Xác định mục tiêu trước khi
-                    xây dựng lộ trình học.
-                </p>
-
-
-                <div class="card-line"></div>
-
-            </div>
-
-
-
-            <div class="feature-card">
-
-                <div class="feature-top">
-
-                    <span class="feature-number">
-                        02
-                    </span>
-
-                    <div class="feature-icon">
-                        🗣️
+                    <div class="hero-actions">
+                        <a href="#khoa-hoc" class="button-primary">Khám phá khóa học ↗</a>
+                        <a href="#dang-ky" class="button-gold">Nhận tư vấn miễn phí</a>
                     </div>
 
+                    <div class="hero-note">从基础开始 · Tiến bộ từng bước mỗi ngày</div>
                 </div>
-
-
-                <h3>
-                    Phản xạ giao tiếp
-                </h3>
-
-
-                <p>
-                    Tăng thời lượng thực hành
-                    nghe, nói và phản xạ.
-                </p>
-
-
-                <div class="card-line"></div>
-
             </div>
+        </section>
 
-
-
-            <div class="feature-card">
-
-                <div class="feature-top">
-
-                    <span class="feature-number">
-                        03
-                    </span>
-
-                    <div class="feature-icon">
-                        📚
+        <!-- ĐIỂM NỔI BẬT -->
+        <section class="trust-bar" aria-label="Điểm nổi bật">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-number">01</div>
+                        <strong>Giao tiếp cơ bản</strong>
+                        <span>Học từ nền tảng</span>
                     </div>
-
-                </div>
-
-
-                <h3>
-                    Tài liệu học tập
-                </h3>
-
-
-                <p>
-                    Từ vựng, ngữ pháp và bài tập
-                    theo từng cấp độ.
-                </p>
-
-
-                <div class="card-line"></div>
-
-            </div>
-
-
-
-            <div class="feature-card">
-
-                <div class="feature-top">
-
-                    <span class="feature-number">
-                        04
-                    </span>
-
-                    <div class="feature-icon">
-                        👩‍🏫
+                    <div class="trust-item">
+                        <div class="trust-number">02</div>
+                        <strong>Luyện thi HSK</strong>
+                        <span>Học theo cấp độ</span>
                     </div>
+                    <div class="trust-item">
+                        <div class="trust-number">03</div>
+                        <strong>Tiếng Trung ứng dụng</strong>
+                        <span>Gắn với thực tế</span>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">04</div>
+                        <strong>Học tập linh hoạt</strong>
+                        <span>Online và trực tiếp</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- GIỚI THIỆU -->
+        <section id="gioi-thieu" class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-label">01 · VỀ HỒ LÔ</span>
+                    <h2>Học đúng phương pháp,<br>tiến bộ từng ngày</h2>
+                    <p>
+                        Tiếng Trung Hồ Lô hướng đến trải nghiệm học dễ hiểu,
+                        có định hướng và ứng dụng được trong cuộc sống.
+                    </p>
                 </div>
 
-
-                <h3>
-                    Giáo viên đồng hành
-                </h3>
-
-
-                <p>
-                    Giáo viên theo sát quá trình
-                    học và hỗ trợ từng học viên.
-                </p>
-
-
-                <div class="card-line"></div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     KHÓA HỌC
-===================================================== -->
-
-<section
-    id="khoa-hoc"
-    class="section section-dark"
->
-
-    <div class="container">
-
-
-        <div class="section-heading heading-light">
-
-            <span class="section-label">
-                KHÓA HỌC
-            </span>
-
-
-            <h2>
-                Chương trình học phù hợp
-                từng nhu cầu
-            </h2>
-
-
-            <p>
-                Từ người mới bắt đầu đến luyện thi HSK
-                và tiếng Trung ứng dụng.
-            </p>
-
-        </div>
-
-
-
-        <!-- DỮ LIỆU TỪ API -->
-
-        <div
-            id="course-list"
-            class="course-grid"
-        >
-
-            <div class="loading-card">
-
-                <div class="loading-spinner"></div>
-
-                <span>
-                    Đang tải khóa học...
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ONLINE
-===================================================== -->
-
-<section class="section section-soft">
-
-    <div class="container">
-
-        <div class="online-layout">
-
-
-            <div class="online-content">
-
-                <span class="section-label">
-                    HỌC ONLINE
-                </span>
-
-
-                <h2>
-                    Học tiếng Trung
-                    linh hoạt ở bất cứ đâu
-                </h2>
-
-
-                <p>
-
-                    Không cần mất thời gian di chuyển.
-                    Học trực tuyến cùng giáo viên và
-                    chủ động lựa chọn thời gian phù hợp.
-
-                </p>
-
-
-                <div class="online-list">
-
-
-                    <div class="online-item">
-
-                        <div class="feature-icon">
-                            💻
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-top">
+                            <span class="feature-number">01 / ĐỊNH HƯỚNG</span>
+                            <span class="feature-icon">🎯</span>
                         </div>
+                        <h3>Mục tiêu rõ ràng</h3>
+                        <p>Xác định mục tiêu học tập và lựa chọn lộ trình phù hợp.</p>
+                        <div class="card-line"></div>
+                    </article>
 
-                        <div>
-
-                            <strong>
-                                Học trực tuyến
-                            </strong>
-
-                            <span>
-                                Học ngay tại nhà
-                            </span>
-
+                    <article class="feature-card">
+                        <div class="feature-top">
+                            <span class="feature-number">02 / THỰC HÀNH</span>
+                            <span class="feature-icon">🗣️</span>
                         </div>
+                        <h3>Phản xạ giao tiếp</h3>
+                        <p>Tăng cơ hội thực hành nghe, nói và sử dụng mẫu câu.</p>
+                        <div class="card-line"></div>
+                    </article>
 
-                    </div>
-
-
-                    <div class="online-item">
-
-                        <div class="feature-icon">
-                            🎧
+                    <article class="feature-card">
+                        <div class="feature-top">
+                            <span class="feature-number">03 / HỌC TẬP</span>
+                            <span class="feature-icon">📚</span>
                         </div>
+                        <h3>Kiến thức nền tảng</h3>
+                        <p>Làm quen từ vựng, ngữ pháp, Pinyin và chữ Hán.</p>
+                        <div class="card-line"></div>
+                    </article>
 
-                        <div>
-
-                            <strong>
-                                Luyện nghe nói
-                            </strong>
-
-                            <span>
-                                Tăng phản xạ giao tiếp
-                            </span>
-
+                    <article class="feature-card">
+                        <div class="feature-top">
+                            <span class="feature-number">04 / ĐỒNG HÀNH</span>
+                            <span class="feature-icon">🌱</span>
                         </div>
-
-                    </div>
-
-
-                    <div class="online-item">
-
-                        <div class="feature-icon">
-                            👥
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Học 1-1 hoặc nhóm
-                            </strong>
-
-                            <span>
-                                Chọn hình thức phù hợp
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
+                        <h3>Tiến bộ bền vững</h3>
+                        <p>Duy trì thói quen học tập và cải thiện qua thực hành.</p>
+                        <div class="card-line"></div>
+                    </article>
                 </div>
-
-
-                <br>
-
-
-                <a
-                    href="#dang-ky"
-                    class="button-primary"
-                >
-                    Nhận tư vấn lộ trình
-                </a>
-
             </div>
+        </section>
 
-
-
-            <div class="online-visual">
-
-                <div class="orbit orbit-1"></div>
-                <div class="orbit orbit-2"></div>
-                <div class="orbit orbit-3"></div>
-
-
-                <div class="chinese-character">
-                    中
+        <!-- KHÓA HỌC -->
+        <section id="khoa-hoc" class="section section-dark">
+            <div class="container">
+                <div class="section-heading heading-light">
+                    <span class="section-label">02 · CHƯƠNG TRÌNH ĐÀO TẠO</span>
+                    <h2>Chọn khóa học<br>theo mục tiêu của bạn</h2>
+                    <p>
+                        Khám phá các chương trình học tiếng Trung phù hợp
+                        với trình độ và định hướng cá nhân.
+                    </p>
                 </div>
 
-
-                <div class="visual-pill pill-1">
-                    Pinyin
+                <!-- Giữ ID để home.js có thể tải khóa học từ API -->
+                <div id="course-list" class="course-grid">
+                    <div class="loading-card">
+                        <div class="loading-spinner"></div>
+                        <span>Đang tải khóa học...</span>
+                    </div>
                 </div>
-
-                <div class="visual-pill pill-2">
-                    Giao tiếp
-                </div>
-
-                <div class="visual-pill pill-3">
-                    HSK
-                </div>
-
-                <div class="visual-pill pill-4">
-                    Từ vựng
-                </div>
-
             </div>
+        </section>
 
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     HSK
-===================================================== -->
-
-<section class="section section-glow">
-
-    <div class="container">
-
-        <div class="hsk-section">
-
-            <div class="hsk-box">
-
-
-                <div class="hsk-main">
-
-
-                    <div>
-
-                        <span class="section-label">
-                            LUYỆN THI HSK
-                        </span>
-
-
-                        <h2>
-                            HSK 1 – HSK 6
-                        </h2>
-
-
+        <!-- HỌC ONLINE -->
+        <section class="section section-soft">
+            <div class="container">
+                <div class="online-layout">
+                    <div class="online-content">
+                        <span class="section-label">03 · HỌC TẬP LINH HOẠT</span>
+                        <h2>Học tiếng Trung<br>theo cách của bạn</h2>
                         <p>
-
-                            Xây dựng nền tảng từ vựng,
-                            ngữ pháp, nghe, đọc và luyện
-                            đề theo từng cấp độ.
-
+                            Chủ động lựa chọn hình thức học, sắp xếp thời gian
+                            và xây dựng thói quen luyện tập phù hợp với lịch trình.
                         </p>
 
+                        <div class="online-list">
+                            <div class="online-item">
+                                <span class="feature-icon">💻</span>
+                                <div>
+                                    <strong>Học trực tuyến</strong>
+                                    <span>Tiện lợi khi học từ xa</span>
+                                </div>
+                            </div>
+                            <div class="online-item">
+                                <span class="feature-icon">🎧</span>
+                                <div>
+                                    <strong>Nghe và nói mỗi ngày</strong>
+                                    <span>Luyện phát âm và phản xạ</span>
+                                </div>
+                            </div>
+                            <div class="online-item">
+                                <span class="feature-icon">👥</span>
+                                <div>
+                                    <strong>Học cá nhân hoặc nhóm</strong>
+                                    <span>Tư vấn hình thức phù hợp</span>
+                                </div>
+                            </div>
+                        </div>
 
-                        <a
-                            href="#dang-ky"
-                            class="button-gold"
-                        >
-                            Tư vấn HSK
-                        </a>
-
+                        <a href="#dang-ky" class="button-primary">Tư vấn lộ trình ↗</a>
                     </div>
 
-
-
-                    <div class="hsk-levels">
-
-                        <div>
-                            HSK
-                            <strong>1</strong>
-                        </div>
-
-                        <div>
-                            HSK
-                            <strong>2</strong>
-                        </div>
-
-                        <div>
-                            HSK
-                            <strong>3</strong>
-                        </div>
-
-                        <div>
-                            HSK
-                            <strong>4</strong>
-                        </div>
-
-                        <div>
-                            HSK
-                            <strong>5</strong>
-                        </div>
-
-                        <div>
-                            HSK
-                            <strong>6</strong>
-                        </div>
-
+                    <div class="online-visual" aria-label="Minh họa học tiếng Trung">
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="orbit orbit-3"></div>
+                        <div class="chinese-character">中</div>
+                        <span class="visual-pill pill-1">Pinyin</span>
+                        <span class="visual-pill pill-2">Giao tiếp</span>
+                        <span class="visual-pill pill-3">HSK</span>
+                        <span class="visual-pill pill-4">Từ vựng</span>
                     </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- HSK -->
+        <section class="section section-glow">
+            <div class="container">
+                <div class="hsk-box">
+                    <div class="hsk-main">
+                        <div>
+                            <span class="section-label">04 · CHINH PHỤC HSK</span>
+                            <h2>Lộ trình HSK<br>theo từng cấp độ</h2>
+                            <p>
+                                Ôn tập từ vựng, ngữ pháp, nghe và đọc.
+                                Lựa chọn cấp độ dựa trên trình độ hiện tại
+                                và mục tiêu của bạn.
+                            </p>
+                            <br>
+                            <a href="#dang-ky" class="button-gold">Tư vấn khóa HSK ↗</a>
+                        </div>
 
+                        <div class="hsk-levels">
+                            <div>HSK <strong>1</strong></div>
+                            <div>HSK <strong>2</strong></div>
+                            <div>HSK <strong>3</strong></div>
+                            <div>HSK <strong>4</strong></div>
+                            <div>HSK <strong>5</strong></div>
+                            <div>HSK <strong>6</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LỊCH KHAI GIẢNG -->
+        <section id="lich-khai-giang" class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-label">05 · LỊCH HỌC</span>
+                    <h2>Lịch khai giảng</h2>
+                    <p>Liên hệ để xác nhận lịch học mới nhất và tình trạng lớp.</p>
                 </div>
 
+                <div class="schedule-box">
+                    <div class="schedule-table-wrap">
+                        <table class="schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Khóa học</th>
+                                    <th>Khai giảng</th>
+                                    <th>Lịch học</th>
+                                    <th>Hình thức</th>
+                                    <th>Trạng thái</th>
+                                    <th>Đăng ký</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Tiếng Trung cho người mới bắt đầu</strong></td>
+                                    <td>Liên hệ</td>
+                                    <td>Theo lịch lớp</td>
+                                    <td>Online / Offline</td>
+                                    <td><span class="status">Liên hệ tư vấn</span></td>
+                                    <td><a class="small-button" href="#dang-ky">Đăng ký</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Luyện thi HSK</strong></td>
+                                    <td>Liên hệ</td>
+                                    <td>Theo lịch lớp</td>
+                                    <td>Online / Offline</td>
+                                    <td><span class="status">Liên hệ tư vấn</span></td>
+                                    <td><a class="small-button" href="#dang-ky">Đăng ký</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tiếng Trung giao tiếp</strong></td>
+                                    <td>Liên hệ</td>
+                                    <td>Theo lịch lớp</td>
+                                    <td>Online / Offline</td>
+                                    <td><span class="status">Liên hệ tư vấn</span></td>
+                                    <td><a class="small-button" href="#dang-ky">Đăng ký</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LỊCH KHAI GIẢNG
-===================================================== -->
-
-<section
-    id="lich-khai-giang"
-    class="section"
->
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <span class="section-label">
-                LỊCH KHAI GIẢNG
-            </span>
-
-
-            <h2>
-                Các lớp sắp khai giảng
-            </h2>
-
-
-            <p>
-                Lịch lớp có thể được cập nhật trực tiếp
-                từ trang quản trị.
-            </p>
-
-        </div>
-
-
-
-        <div class="schedule-box">
-
-            <div class="schedule-table-wrap">
-
-                <table class="schedule-table">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Khóa học
-                            </th>
-
-                            <th>
-                                Khai giảng
-                            </th>
-
-                            <th>
-                                Lịch học
-                            </th>
-
-                            <th>
-                                Hình thức
-                            </th>
-
-                            <th>
-                                Trạng thái
-                            </th>
-
-                            <th>
-                                Đăng ký
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-
-                        <tr>
-
-                            <td>
-                                <strong>
-                                    Tiếng Trung cho người mới bắt đầu
-                                </strong>
-                            </td>
-
-                            <td>
-                                05/10/2026
-                            </td>
-
-                            <td>
-                                2-4-6
-                            </td>
-
-                            <td>
-                                Online
-                            </td>
-
-                            <td>
-
-                                <span class="status">
-                                    Đang nhận đăng ký
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a
-                                    class="small-button"
-                                    href="#dang-ky"
-                                >
-                                    Đăng ký
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-
-                        <tr>
-
-                            <td>
-                                <strong>
-                                    Luyện thi HSK 1-3
-                                </strong>
-                            </td>
-
-                            <td>
-                                12/10/2026
-                            </td>
-
-                            <td>
-                                3-5-7
-                            </td>
-
-                            <td>
-                                Online / Offline
-                            </td>
-
-                            <td>
-
-                                <span class="status">
-                                    Đang nhận đăng ký
-                                </span>
-
-                            </td>
-
-                            <td>
-
-                                <a
-                                    class="small-button"
-                                    href="#dang-ky"
-                                >
-                                    Đăng ký
-                                </a>
-
-                            </td>
-
-                        </tr>
-
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     GIÁO VIÊN
-===================================================== -->
-
-<section
-    id="giao-vien"
-    class="section section-soft"
->
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <span class="section-label">
-                ĐỘI NGŨ
-            </span>
-
-
-            <h2>
-                Giáo viên đồng hành
-                cùng bạn
-            </h2>
-
-
-            <p>
-                Đội ngũ giáo viên hỗ trợ học viên
-                theo từng mục tiêu.
-            </p>
-
-        </div>
-
-
-
-        <div
-            id="teacher-list"
-            class="teacher-grid"
-        >
-
-
-            <div class="teacher-card">
-
-                <div class="teacher-placeholder">
-                    g
+        </section>
+
+        <!-- GIÁO VIÊN -->
+        <section id="giao-vien" class="section section-soft">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-label">06 · ĐỘI NGŨ</span>
+                    <h2>Đồng hành trên<br>hành trình học tiếng Trung</h2>
+                    <p>Trao đổi với Hồ Lô để được tư vấn về giáo viên và chương trình học.</p>
                 </div>
 
-                <div class="teacher-body">
+                <!-- Giữ ID để home.js có thể tải danh sách giáo viên -->
+                <div id="teacher-list" class="teacher-grid">
+                    <article class="teacher-card">
+                        <div class="teacher-placeholder">中</div>
+                        <div class="teacher-body">
+                            <h3>Giáo viên tiếng Trung</h3>
+                            <div class="teacher-specialty">Giao tiếp & nền tảng</div>
+                            <p>Hỗ trợ người học xây dựng nền tảng phát âm và giao tiếp.</p>
+                            <a class="teacher-more" href="#dang-ky">Tìm hiểu thêm →</a>
+                        </div>
+                    </article>
 
-                    <h3>
-                        Giáo viên Tiếng Trung
-                    </h3>
+                    <article class="teacher-card">
+                        <div class="teacher-placeholder">学</div>
+                        <div class="teacher-body">
+                            <h3>Giáo viên tiếng Trung</h3>
+                            <div class="teacher-specialty">HSK & luyện tập</div>
+                            <p>Hướng dẫn ôn tập kiến thức và thực hành theo cấp độ.</p>
+                            <a class="teacher-more" href="#dang-ky">Tìm hiểu thêm →</a>
+                        </div>
+                    </article>
 
-                    <div class="teacher-specialty">
-                        Chuyên giao tiếp & HSK
+                    <article class="teacher-card">
+                        <div class="teacher-placeholder">说</div>
+                        <div class="teacher-body">
+                            <h3>Giáo viên tiếng Trung</h3>
+                            <div class="teacher-specialty">Giao tiếp ứng dụng</div>
+                            <p>Chú trọng luyện nghe, nói và sử dụng ngôn ngữ trong thực tế.</p>
+                            <a class="teacher-more" href="#dang-ky">Tìm hiểu thêm →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- BÀI VIẾT -->
+        <section id="bai-viet" class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-label">07 · GÓC HỌC TIẾNG TRUNG</span>
+                    <h2>Kiến thức dành cho bạn</h2>
+                    <p>Mẹo học tập, từ vựng và kinh nghiệm luyện tiếng Trung.</p>
+                </div>
+
+                <div class="article-grid">
+                    <article class="article-card">
+                        <div class="article-number">01</div>
+                        <span class="article-tag">Từ vựng</span>
+                        <h3>Những từ vựng tiếng Trung cơ bản</h3>
+                        <p>Bắt đầu từ các từ và mẫu câu thường gặp trong đời sống.</p>
+                        <a class="article-link" href="#dang-ky">Tìm hiểu thêm →</a>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-number">02</div>
+                        <span class="article-tag">Pinyin</span>
+                        <h3>Cách làm quen với Pinyin</h3>
+                        <p>Học âm đầu, vận mẫu và thanh điệu một cách có hệ thống.</p>
+                        <a class="article-link" href="#dang-ky">Tìm hiểu thêm →</a>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-number">03</div>
+                        <span class="article-tag">HSK</span>
+                        <h3>Kinh nghiệm luyện nghe HSK</h3>
+                        <p>Xây dựng thói quen nghe và ôn tập từ vựng đều đặn.</p>
+                        <a class="article-link" href="#dang-ky">Tìm hiểu thêm →</a>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-number">04</div>
+                        <span class="article-tag">Giao tiếp</span>
+                        <h3>Luyện phản xạ tiếng Trung</h3>
+                        <p>Thực hành mẫu câu và tình huống giao tiếp hằng ngày.</p>
+                        <a class="article-link" href="#dang-ky">Tìm hiểu thêm →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ĐĂNG KÝ TƯ VẤN -->
+        <section id="dang-ky" class="registration-section">
+            <div class="container">
+                <div class="registration-box">
+                    <div class="registration-info">
+                        <span class="section-label">08 · BẮT ĐẦU HÀNH TRÌNH</span>
+                        <h2>Để Hồ Lô tư vấn lộ trình phù hợp</h2>
+                        <p>
+                            Chia sẻ mục tiêu học tập để được tư vấn khóa học
+                            phù hợp với trình độ và thời gian của bạn.
+                        </p>
+
+                        <div class="contact-mini">
+                            <div>
+                                <strong>HOTLINE</strong>
+                                <span>034 322 3809</span>
+                            </div>
+                            <div>
+                                <strong>EMAIL</strong>
+                                <span>tiengtrungholo@gmail.com</span>
+                            </div>
+                            <div>
+                                <strong>ĐỊA ĐIỂM</strong>
+                                <span>Hà Nội</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <p>
-                        Đồng hành cùng học viên từ
-                        nền tảng đến giao tiếp thực tế.
-                    </p>
+                    <!-- Giữ nguyên ID và tên trường để tương thích với backend hiện có -->
+                    <form id="register-form" class="register-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ho_ten">Họ và tên *</label>
+                                <input id="ho_ten" name="ho_ten" type="text"
+                                       placeholder="Nhập họ và tên" autocomplete="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="so_dien_thoai">Số điện thoại *</label>
+                                <input id="so_dien_thoai" name="so_dien_thoai" type="tel"
+                                       placeholder="Nhập số điện thoại" autocomplete="tel" required>
+                            </div>
+                        </div>
 
-                    <a
-                        class="teacher-more"
-                        href="#dang-ky"
-                    >
-                        Tìm hiểu thêm →
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" type="email"
+                                       placeholder="example@gmail.com" autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="khoa_hoc">Khóa học quan tâm</label>
+                                <select id="khoa_hoc" name="khoa_hoc">
+                                    <option>Tiếng Trung cho người mới bắt đầu</option>
+                                    <option>Tiếng Trung giao tiếp</option>
+                                    <option>Luyện thi HSK 1-3</option>
+                                    <option>Tiếng Trung 1-1</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="hinh_thuc_hoc">Hình thức học</label>
+                                <select id="hinh_thuc_hoc" name="hinh_thuc_hoc">
+                                    <option>Online</option>
+                                    <option>Offline</option>
+                                    <option>1 kèm 1</option>
+                                    <option>Học nhóm</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="trinh_do">Trình độ hiện tại</label>
+                                <input id="trinh_do" name="trinh_do" type="text"
+                                       placeholder="Ví dụ: Chưa biết tiếng Trung">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thoi_gian">Thời gian mong muốn</label>
+                            <input id="thoi_gian" name="thoi_gian" type="text"
+                                   placeholder="Ví dụ: Tối thứ 2, 4, 6">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ghi_chu">Nội dung cần tư vấn</label>
+                            <textarea id="ghi_chu" name="ghi_chu" rows="4"
+                                      placeholder="Bạn muốn được tư vấn điều gì?"></textarea>
+                        </div>
+
+                        <button class="button-submit" type="submit">GỬI ĐĂNG KÝ ↗</button>
+
+                        <div id="register-msg" class="form-note" role="status" aria-live="polite"></div>
+
+                        <p class="form-note">
+                            Vui lòng kiểm tra thông tin trước khi gửi.
+                            Việc lưu đăng ký phụ thuộc vào kết nối máy chủ của website.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="lien-he" class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-brand">
+                    <a class="brand large" href="#trang-chu">
+                        <span class="brand-mark">
+                            <img src="/images/hinh-anh-ho-logo.jpg" alt="Logo Tiếng Trung Hồ Lô">
+                        </span>
+                        <span class="brand-text">
+                            <strong>TIẾNG TRUNG HỒ LÔ</strong>
+                            <small>HỌC TIẾNG TRUNG · VƯƠN XA</small>
+                        </span>
                     </a>
 
-                </div>
-
-            </div>
-
-
-
-            <div class="teacher-card">
-
-                <div class="teacher-placeholder">
-                    g
-                </div>
-
-                <div class="teacher-body">
-
-                    <h3>
-                        Giáo viên Tiếng Trung
-                    </h3>
-
-                    <div class="teacher-specialty">
-                        Lộ trình & luyện đề
-                    </div>
-
                     <p>
-                        Hỗ trợ xây dựng kế hoạch học
-                        và luyện thi theo cấp độ.
+                        Đồng hành cùng học sinh, sinh viên và người đi làm
+                        trên hành trình học tiếng Trung giao tiếp, HSK
+                        và tiếng Trung ứng dụng.
                     </p>
-
-                    <a
-                        class="teacher-more"
-                        href="#dang-ky"
-                    >
-                        Tìm hiểu thêm →
-                    </a>
-
+                    <a href="#dang-ky" class="footer-button">Đăng ký tư vấn ↗</a>
                 </div>
 
+                <div class="contact-column">
+                    <h3>Liên kết</h3>
+                    <a href="#trang-chu">Trang chủ</a>
+                    <a href="#gioi-thieu">Giới thiệu</a>
+                    <a href="#khoa-hoc">Khóa học</a>
+                    <a href="#lich-khai-giang">Lịch khai giảng</a>
+                    <a href="#giao-vien">Giáo viên</a>
+                    <a href="#bai-viet">Bài viết</a>
+                </div>
+
+                <div class="contact-column">
+                    <h3>Liên hệ</h3>
+                    <p>Điện thoại: <a href="tel:0343223809">034 322 3809</a></p>
+                    <p>Email: <a href="mailto:tiengtrungholo@gmail.com">tiengtrungholo@gmail.com</a></p>
+                    <p>Địa điểm: Hà Nội</p>
+                    <a href="#dang-ky">Nhận tư vấn lộ trình →</a>
+                </div>
             </div>
-
-
-
-            <div class="teacher-card">
-
-                <div class="teacher-placeholder">
-                    g
-                </div>
-
-                <div class="teacher-body">
-
-                    <h3>
-                        Giáo viên Tiếng Trung
-                    </h3>
-
-                    <div class="teacher-specialty">
-                        Phản xạ & ứng dụng
-                    </div>
-
-                    <p>
-                        Tập trung nghe, nói và sử dụng
-                        tiếng Trung trong thực tế.
-                    </p>
-
-                    <a
-                        class="teacher-more"
-                        href="#dang-ky"
-                    >
-                        Tìm hiểu thêm →
-                    </a>
-
-                </div>
-
-            </div>
-
-
         </div>
+    </footer>
 
+    <div class="footer">
+        <div class="container footer-inner">
+            <span>© <span id="copyright-year"></span> Tiếng Trung Hồ Lô. All rights reserved.</span>
+            <a href="#trang-chu">VỀ TRANG ĐẦU ↑</a>
+        </div>
     </div>
 
-</section>
-
-
-
-<!-- =====================================================
-     BÀI VIẾT
-===================================================== -->
-
-<section
-    id="bai-viet"
-    class="section"
->
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-            <span class="section-label">
-                GÓC HỌC TIẾNG TRUNG
-            </span>
-
-
-            <h2>
-                Bài viết mới
-            </h2>
-
-
-            <p>
-                Kiến thức và kinh nghiệm giúp bạn
-                học tiếng Trung hiệu quả hơn.
-            </p>
-
-        </div>
-
-
-
-        <div class="article-grid">
-
-
-            <article class="article-card">
-
-                <div class="article-number">
-                    01
-                </div>
-
-                <span class="article-tag">
-                    Từ vựng
-                </span>
-
-                <h3>
-                    100 từ vựng tiếng Trung cơ bản
-                </h3>
-
-                <p>
-                    Tổng hợp những từ vựng phù hợp
-                    cho người mới bắt đầu.
-                </p>
-
-                <a
-                    class="article-link"
-                    href="#"
-                >
-                    Đọc bài →
-                </a>
-
-            </article>
-
-
-
-            <article class="article-card">
-
-                <div class="article-number">
-                    02
-                </div>
-
-                <span class="article-tag">
-                    Pinyin
-                </span>
-
-                <h3>
-                    Cách học Pinyin dễ nhớ
-                </h3>
-
-                <p>
-                    Làm quen phát âm và thanh điệu
-                    ngay từ những bài học đầu tiên.
-                </p>
-
-                <a
-                    class="article-link"
-                    href="#"
-                >
-                    Đọc bài →
-                </a>
-
-            </article>
-
-
-
-            <article class="article-card">
-
-                <div class="article-number">
-                    03
-                </div>
-
-                <span class="article-tag">
-                    HSK
-                </span>
-
-                <h3>
-                    Kinh nghiệm luyện nghe HSK
-                </h3>
-
-                <p>
-                    Gợi ý cách xây dựng thói quen
-                    nghe tiếng Trung mỗi ngày.
-                </p>
-
-                <a
-                    class="article-link"
-                    href="#"
-                >
-                    Đọc bài →
-                </a>
-
-            </article>
-
-
-
-            <article class="article-card">
-
-                <div class="article-number">
-                    04
-                </div>
-
-                <span class="article-tag">
-                    Giao tiếp
-                </span>
-
-                <h3>
-                    Cách luyện phản xạ tiếng Trung
-                </h3>
-
-                <p>
-                    Những cách đơn giản để tăng phản
-                    xạ và tự tin khi giao tiếp.
-                </p>
-
-                <a
-                    class="article-link"
-                    href="#"
-                >
-                    Đọc bài →
-                </a>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ĐĂNG KÝ
-===================================================== -->
-
-<section
-    id="dang-ky"
-    class="registration-section"
->
-
-    <div class="container">
-
-
-        <div class="registration-box">
-
-
-            <div class="registration-info">
-
-                <span class="section-label">
-                    ĐĂNG KÝ TƯ VẤN
-                </span>
-
-
-                <h2>
-                    Để Hồ Lô tư vấn
-                    lộ trình phù hợp
-                </h2>
-
-
-                <p>
-
-                    Hãy để lại thông tin.
-                    Đội ngũ Hồ Lô sẽ liên hệ để
-                    tư vấn khóa học phù hợp với
-                    mục tiêu và trình độ của bạn.
-
-                </p>
-
-
-                <div class="contact-mini">
-
-
-                    <div>
-
-                        <strong>
-                            HOTLINE
-                        </strong>
-
-                        <span>
-                            034 322 3809
-                        </span>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            EMAIL
-                        </strong>
-
-                        <span>
-                            tiengtrungholo@gmail.com
-                        </span>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            ĐỊA ĐIỂM
-                        </strong>
-
-                        <span>
-                            Hà Nội
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-
-            <!-- FORM -->
-
-            <form
-                id="register-form"
-                class="register-form"
-            >
-
-
-                <div class="form-row">
-
-
-                    <div class="form-group">
-
-                        <label for="ho_ten">
-                            Họ và tên *
-                        </label>
-
-                        <input
-                            id="ho_ten"
-                            name="ho_ten"
-                            type="text"
-                            placeholder="Nhập họ và tên"
-                            required
-                        >
-
-                    </div>
-
-
-
-                    <div class="form-group">
-
-                        <label for="so_dien_thoai">
-                            Số điện thoại *
-                        </label>
-
-                        <input
-                            id="so_dien_thoai"
-                            name="so_dien_thoai"
-                            type="tel"
-                            placeholder="Nhập số điện thoại"
-                            required
-                        >
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="form-row">
-
-
-                    <div class="form-group">
-
-                        <label for="email">
-                            Email
-                        </label>
-
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            placeholder="example@gmail.com"
-                        >
-
-                    </div>
-
-
-
-                    <div class="form-group">
-
-                        <label for="khoa_hoc">
-                            Khóa học quan tâm
-                        </label>
-
-                        <select
-                            id="khoa_hoc"
-                            name="khoa_hoc"
-                        >
-
-                            <option>
-                                Tiếng Trung cho người mới bắt đầu
-                            </option>
-
-                            <option>
-                                Tiếng Trung giao tiếp
-                            </option>
-
-                            <option>
-                                Luyện thi HSK 1-3
-                            </option>
-
-                            <option>
-                                Tiếng Trung 1-1
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="form-row">
-
-
-                    <div class="form-group">
-
-                        <label for="hinh_thuc_hoc">
-                            Hình thức học
-                        </label>
-
-                        <select
-                            id="hinh_thuc_hoc"
-                            name="hinh_thuc_hoc"
-                        >
-
-                            <option>
-                                Online
-                            </option>
-
-                            <option>
-                                Offline
-                            </option>
-
-                            <option>
-                                1 kèm 1
-                            </option>
-
-                            <option>
-                                Học nhóm
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-
-                    <div class="form-group">
-
-                        <label for="trinh_do">
-                            Trình độ hiện tại
-                        </label>
-
-                        <input
-                            id="trinh_do"
-                            name="trinh_do"
-                            type="text"
-                            placeholder="Ví dụ: Chưa biết tiếng Trung"
-                        >
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="form-group">
-
-                    <label for="thoi_gian">
-                        Thời gian mong muốn
-                    </label>
-
-                    <input
-                        id="thoi_gian"
-                        name="thoi_gian"
-                        type="text"
-                        placeholder="Ví dụ: Tối 2-4-6"
-                    >
-
-                </div>
-
-
-
-                <div class="form-group">
-
-                    <label for="ghi_chu">
-                        Nội dung cần tư vấn
-                    </label>
-
-                    <textarea
-                        id="ghi_chu"
-                        name="ghi_chu"
-                        rows="5"
-                        placeholder="Bạn muốn được tư vấn điều gì?"
-                    ></textarea>
-
-                </div>
-
-
-
-                <button
-                    class="button-submit"
-                    type="submit"
-                >
-                    GỬI ĐĂNG KÝ
-                </button>
-
-
-                <div
-                    id="register-msg"
-                    class="form-note"
-                ></div>
-
-
-                <div class="form-note">
-
-                    Thông tin đăng ký sẽ được lưu vào
-                    hệ thống quản trị để tư vấn viên xử lý.
-
-                </div>
-
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-</main>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer
-    id="lien-he"
-    class="contact-section"
->
-
-    <div class="container">
-
-
-        <div class="contact-grid">
-
-
-            <!-- LOGO FOOTER -->
-
-            <div class="contact-brand">
-
-                <a
-                    class="brand large"
-                    href="#trang-chu"
-                >
-
-                    <span class="brand-mark">
-
-                        <img
-                            src="/images/hinh-anh-ho-logo.jpg"
-                            alt="Logo Tiếng Trung Hồ Lô"
-                        >
-
-                    </span>
-
-
-                    <span class="brand-text">
-
-                        <strong>
-                            TIẾNG TRUNG HỒ LÔ
-                        </strong>
-
-                        <small>
-                            HỌC TIẾNG TRUNG • VƯƠN XA
-                        </small>
-
-                    </span>
-
-                </a>
-
-
-                <p>
-
-                    Học tiếng Trung cho học sinh,
-                    sinh viên và người đi làm.
-
-                    Giao tiếp, HSK và tiếng Trung
-                    ứng dụng với lộ trình rõ ràng.
-
-                </p>
-
-
-                <a
-                    href="#dang-ky"
-                    class="footer-button"
-                >
-                    Đăng ký tư vấn
-                </a>
-
-            </div>
-
-
-
-            <!-- LIÊN KẾT -->
-
-            <div class="contact-column">
-
-                <h3>
-                    Liên kết
-                </h3>
-
-
-                <a href="#trang-chu">
-                    Trang chủ
-                </a>
-
-                <a href="#gioi-thieu">
-                    Giới thiệu
-                </a>
-
-                <a href="#khoa-hoc">
-                    Khóa học
-                </a>
-
-                <a href="#lich-khai-giang">
-                    Lịch khai giảng
-                </a>
-
-                <a href="#giao-vien">
-                    Giáo viên
-                </a>
-
-                <a href="#bai-viet">
-                    Bài viết
-                </a>
-
-            </div>
-
-
-
-            <!-- LIÊN HỆ -->
-
-            <div class="contact-column">
-
-                <h3>
-                    Liên hệ
-                </h3>
-
-
-                <p>
-                    📞 034 322 3809
-                </p>
-
-                <p>
-                    ✉ tiengtrungholo@gmail.com
-                </p>
-
-                <p>
-                    📍 Phú Thọ-Hà Nội
-                </p>
-
-
-                <a href="#dang-ky">
-                    Nhận tư vấn lộ trình →
-                </a>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-</footer>
-
-
-
-<!-- =====================================================
-     COPYRIGHT
-===================================================== -->
-
-<div class="footer">
-
-    <div class="container footer-inner">
-
-        <span>
-            
-            
-        </span>
-
-
-        <a href="#trang-chu">
-            VỀ TRANG ĐẦU ↑
-        </a>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-<script src="/js/home.js"></script>
-
-
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-
-
-    /* =================================================
-       MOBILE MENU
-    ================================================= */
-
-    const menuToggle =
-        document.getElementById("menu-toggle");
-
-    const mainNav =
-        document.getElementById("main-nav");
-
-
-    if (menuToggle && mainNav) {
-
-        menuToggle.addEventListener(
-            "click",
-            function () {
-
-                menuToggle.classList.toggle("active");
-
-                mainNav.classList.toggle("open");
-
-            }
-        );
-
-
-        mainNav
-            .querySelectorAll("a")
-            .forEach(function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        menuToggle.classList.remove(
-                            "active"
-                        );
-
-                        mainNav.classList.remove(
-                            "open"
-                        );
-
-                    }
-                );
-
-            });
-
-    }
-
-
-
-    /* =================================================
-       HEADER SCROLL
-    ================================================= */
-
-    const header =
-        document.querySelector(".header");
-
-
-    function updateHeader() {
-
-        if (!header) return;
-
-        if (window.scrollY > 30) {
-
-            header.classList.add("scrolled");
-
-        } else {
-
-            header.classList.remove("scrolled");
-
+    <!-- GIỮ JAVASCRIPT HIỆN CÓ -->
+    <script src="/js/home.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menu-toggle");
+        const mainNav = document.getElementById("main-nav");
+        const header = document.querySelector(".header");
+        const year = document.getElementById("copyright-year");
+
+        if (year) {
+            year.textContent = new Date().getFullYear();
         }
 
-    }
+        /* Menu điện thoại */
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener("click", function () {
+                const open = mainNav.classList.toggle("open");
+                menuToggle.classList.toggle("active", open);
+                menuToggle.setAttribute("aria-expanded", String(open));
+            });
 
+            mainNav.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", function () {
+                    mainNav.classList.remove("open");
+                    menuToggle.classList.remove("active");
+                    menuToggle.setAttribute("aria-expanded", "false");
+                });
+            });
+        }
 
-    window.addEventListener(
-        "scroll",
-        updateHeader,
-        { passive: true }
-    );
+        /* Header khi cuộn trang */
+        function updateHeader() {
+            if (header) {
+                header.classList.toggle("scrolled", window.scrollY > 30);
+            }
+        }
 
-    updateHeader();
+        window.addEventListener("scroll", updateHeader, { passive: true });
+        updateHeader();
 
-
-
-    /* =================================================
-       REVEAL
-    ================================================= */
-
-    const revealElements =
-        document.querySelectorAll(
+        /* Hiệu ứng xuất hiện khi cuộn */
+        const revealElements = document.querySelectorAll(
             ".feature-card, .course-card, .teacher-card, .article-card, .online-item, .schedule-box, .hsk-box, .registration-box"
         );
 
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
 
-    if ("IntersectionObserver" in window) {
-
-        const observer =
-            new IntersectionObserver(
-                function (entries) {
-
-                    entries.forEach(
-                        function (entry) {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target.classList.add(
-                                    "show"
-                                );
-
-                                observer.unobserve(
-                                    entry.target
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-
-        revealElements.forEach(
-            function (element) {
-
+            revealElements.forEach(function (element) {
                 element.classList.add("reveal");
-
                 observer.observe(element);
-
-            }
-        );
-
-    } else {
-
-        revealElements.forEach(
-            function (element) {
-
+            });
+        } else {
+            revealElements.forEach(function (element) {
                 element.classList.add("show");
+            });
+        }
 
-            }
-        );
+        /* Đánh dấu mục menu theo phần đang xem */
+        const sections = document.querySelectorAll("main section[id]");
+        const navLinks = document.querySelectorAll(".main-nav a[href^='#']");
 
-    }
+        if ("IntersectionObserver" in window && sections.length && navLinks.length) {
+            const navObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
 
+                    navLinks.forEach(function (link) {
+                        link.classList.toggle(
+                            "active",
+                            link.getAttribute("href") === "#" + entry.target.id
+                        );
+                    });
+                });
+            }, { rootMargin: "-35% 0px -55% 0px" });
 
-
-    /* =================================================
-       ACTIVE NAV
-    ================================================= */
-
-    const sections =
-        document.querySelectorAll(
-            "main section[id]"
-        );
-
-    const navLinks =
-        document.querySelectorAll(
-            ".main-nav a[href^='#']"
-        );
-
-
-    if (
-        sections.length &&
-        navLinks.length &&
-        "IntersectionObserver" in window
-    ) {
-
-        const navObserver =
-            new IntersectionObserver(
-                function (entries) {
-
-                    entries.forEach(
-                        function (entry) {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                const id =
-                                    entry.target.id;
-
-
-                                navLinks.forEach(
-                                    function (link) {
-
-                                        link.classList.remove(
-                                            "active"
-                                        );
-
-
-                                        if (
-                                            link.getAttribute(
-                                                "href"
-                                            ) === "#" + id
-                                        ) {
-
-                                            link.classList.add(
-                                                "active"
-                                            );
-
-                                        }
-
-                                    }
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    rootMargin:
-                        "-35% 0px -55% 0px"
-                }
-            );
-
-
-        sections.forEach(
-            function (section) {
-
+            sections.forEach(function (section) {
                 navObserver.observe(section);
+            });
+        }
 
-            }
-        );
-
-    }
-
-
-
-    /* =================================================
-       IMAGE ERROR CHECK
-    ================================================= */
-
-    document
-        .querySelectorAll("img")
-        .forEach(function (img) {
-
-            img.addEventListener(
-                "error",
-                function () {
-
-                    console.warn(
-                        "Không tìm thấy hình ảnh:",
-                        img.src
-                    );
-
-                }
-            );
-
+        /* Ghi nhận ảnh không tải được để dễ kiểm tra */
+        document.querySelectorAll("img").forEach(function (img) {
+            img.addEventListener("error", function () {
+                console.warn("Không tải được hình ảnh:", img.src);
+            });
         });
-
-});
-
-</script>
-
-
+    });
+    </script>
 </body>
-
 </html>
